@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const userRoutes = require('./routes/users.routes');
 const authRoutes = require('./routes/auth.routes');
+const postsRoutes = require('./routes/posts.routes');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/posts', postsRoutes);
 
 mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('DB Connected!'))

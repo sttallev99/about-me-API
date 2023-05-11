@@ -42,7 +42,7 @@ router.delete('/:id', async (req, res) => {
 //get user
 router.get('/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.id).select('-password')
         return res.status(200).json(user)
     } catch(err) {
         return res.status(500).json(err);

@@ -58,6 +58,7 @@ router.put('/:id/follow', async (req, res) => {
             if(!user.followers.includes(req.body.userId)) {
                 await user.updateOne({ $push: { followers: req.body.userId }});
                 await currentUser.updateOne({ $push: { followings: req.body.userId }});
+                res.status(200).json('user followed')
             } else {
                 res.status(403).json('you allready follow this user');
             }

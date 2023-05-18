@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const cors = require('cors');
 require('dotenv').config();
 
 const userRoutes = require('./routes/users.routes');
@@ -12,7 +13,8 @@ const app = express();
 
 app.use(express.json());
 app.use(helmet());
-app.use(morgan('common'))
+app.use(morgan('common'));
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
